@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% block title %}Página principal{% endblock title %}
+
+
+{% block main %}
+  {% for post in  post_list%}
+      <h2><a href="{% url 'post' post.slug %}">{{post.titulo}}</a></h2>
+      <p>{{post.cuerpo}}</p>
+  {% endfor %}
+
+{% endblock main %}

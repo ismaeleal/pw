@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <style>
+	body {
+    	background-color: lightblue;
+	}
+	h1 {
+    color: white;
+    text-align: center;
+	}
+	
+	
+
+	</style>
+
+    <meta charset="utf-8">
+
+    <title>{% block title %}{% endblock title %}</title>
+  </head>
+
+	
+<nav>
+	||
+	<a href="/">Inicio</a> 
+	||
+	{% if user.is_authenticated %}
+	<a href="/cerrar">cerrar sesion </a> 
+	||
+	<a href="/entrada">crear entrada</a> 
+	||
+
+	<h5 style="color:red;text-align: center;font-size: 20px">@ Bienvenido {{user.username|capfirst}} @</h5>
+	
+	{% else %}
+	||
+	<a href="/registro">registro</a> 
+	||
+	<a href="/inicio">iniciar sesion</a> 
+	||
+	{% endif %}
+  
+  
+</nav>
+  <body>
+	
+
+    <h1>Mi blog</h1>
+    {% block main %}{% endblock main %}
+  </body>
+</html>

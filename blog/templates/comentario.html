@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block title %}nuevo comentario{% endblock title %}
+{% block main %}
+
+
+Bienvenido   {{user.username}} puede crear su comentario
+
+<form method= "POST" action="">{% csrf_token %}
+{{ el_form.as_p }}
+<input type='submit' value='añadir' />
+
+</form>
+
+{% endblock main %}

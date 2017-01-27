@@ -1,0 +1,14 @@
+
+{% extends "base.html" %}
+{% block title %}registro{% endblock title %}
+{% block main %}
+
+<h2 style="color:red;font-size: 35px"> registrar usuario</h2>
+
+
+
+<form method= "POST" action="">{% csrf_token %}
+{{ el_form.as_p }}
+<input type='submit' value='registro' />
+</form>
+{% endblock main %}

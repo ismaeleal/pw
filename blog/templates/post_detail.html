@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block title %}{{post.titulo}}{% endblock title %}
+{% block main %}
+
+<b><h2>{{post.titulo}}</h2></b>
+<b>{{post.publicado}} por {{post.autor}}</b>
+<p>{{post.cuerpo}}</p>
+
+	
+	<h3>comentarios</h3>
+
+	 <p><a href="{% url 'nuevo_comentario' post.slug  %}">nuevo cometario</a></p>
+
+
+{% for c in  comentarios%}
+      <b>comentario de :{{c.autor}}</b>
+      <p>{{c.texto}}</p>
+{% endfor %}
+
+{% endblock main %}
+

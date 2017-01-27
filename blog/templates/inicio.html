@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block title %}nuevo comentario{% endblock title %}
+{% block main %}
+<h2 style="color:red;font-size: 35px"> Iniciar sesion </h2>
+
+<form method= "POST" action="">{% csrf_token %}
+{{ el_form1.as_p }}
+<input type='submit' value='inicio' />
+</form>
+{% endblock main %}
+
+
