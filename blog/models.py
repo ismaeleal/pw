@@ -4,14 +4,6 @@ from django.template.defaultfilters import slugify
 # Create your models here.
 
 
-class UserProfile(models.Model):
-    nombre = models.CharField(max_length=300)
-    usuario = models.CharField(max_length=300)
-    email = models.CharField(max_length=300)
-    contraseña = models.CharField(max_length=100)
-
-    def __str__(self):
-        return '%s' % self.nombre
     
 
          

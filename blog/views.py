@@ -8,9 +8,10 @@ from .forms import RegForm
 from .forms import iniForm
 from .forms import entradaForm
 from .forms import cometaForm
-from .models import UserProfile
+
 from .models import comentarios
 from django.contrib.auth.models import User
+from django.contrib.auth.decorators import login_required
 
 from django.http import HttpResponseRedirect
 from django.contrib.auth import login, authenticate, logout
@@ -85,7 +86,7 @@ def iniView(request):
 
 
 
-
+@login_required(login_url = '/users/login')
 def entradaView(request):
 	form = entradaForm(request.POST or None)
 	if form.is_valid():
@@ -104,11 +105,19 @@ def entradaView(request):
 def comeView(request, slug):
 	form = cometaForm(request.POST or None)
 	if form.is_valid():
-		form_data = form.cleaned_data
-		abc = form_data.get("comentario")
-		abc2 = Post.objects.get(slug=slug)
-		abc3 = request.user
-		obj = comentarios.objects.create(texto=abc, Post=abc2, autor=abc3)
+		if request.user.is_authenticated:
+			form_data = form.cleaned_data
+			abc = form_data.get("comentario")
+			abc2 = Post.objects.get(slug=slug)
+			abc3 = request.user
+			obj = comentarios.objects.create(texto=abc, Post=abc2, autor=abc3)
+		else:
+			form_data = form.cleaned_data
+			abc = form_data.get("comentario")
+			abc2 = Post.objects.get(slug=slug)
+			abc3 = User.objects.get(username='anonimo')
+			obj = comentarios.objects.create(texto=abc, Post=abc2, autor=abc3)
+
 	context = {
 		"el_form":form,
 	}
@@ -116,7 +125,7 @@ def comeView(request, slug):
 	return render(request, "comentario.html",context)
 
 
-
+@login_required(login_url = '/users/login')
 def logoutView(request):
     logout(request)
 

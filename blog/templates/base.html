@@ -5,6 +5,17 @@
 	body {
     	background-color: lightblue;
 	}
+	nav {
+	float: left;
+	
+	background: #300;
+	}
+header {
+	background: #ccc;
+	padding: 20px;
+	width: auto;
+        text-align: center;
+}
 	h1 {
     color: white;
     text-align: center;
@@ -20,7 +31,7 @@
   </head>
 
 	
-<nav>
+<header>
 	||
 	<a href="/">Inicio</a> 
 	||
@@ -41,11 +52,20 @@
 	{% endif %}
   
   
-</nav>
+</header>
   <body>
 	
 
     <h1>Mi blog</h1>
     {% block main %}{% endblock main %}
   </body>
+
+ <footer class="site-footer">
+          <hr>
+          <p style="text-align: center;">
+              <small>Programación Web</small>
+              <small> || </small>
+              <small><strong>ⓒ 2017 Ismael Leal Castillejos</strong></small>
+          </p>
+      </footer>
 </html>
